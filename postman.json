@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "your-postman-id",
+		"name": "Quiz App Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Questions by Level",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/questions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"questions",
+						"1"
+					]
+				},
+				"description": "Get questions for a specific level (1: Beginner, 2: Intermediate, 3: Advanced)"
+			},
+			"response": []
+		},
+		{
+            "name": "Submit Answer",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"user_id\": 1,\n    \"question_id\": 1,\n    \"answer\": \"Paris\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8080/answer",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["answer"]
+              },
+              "description": "Submit an answer for a question"
+            },
+            "response": []
+          },
+          {
+            "name": "Create User",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"username\": \"TestUser\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8080/user",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user"]
+              },
+              "description": "Create a new user"
+            },
+            "response": []
+          },
+          {
+            "name": "Get User",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/user/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "1"]
+              },
+              "description": "Get user information (creates a new user if not found)"
+            },
+            "response": []
+          },
+		{
+            "name": "Use Lifeline",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"user_id\": 1,\n    \"question_id\": 1,\n    \"lifeline_type\": \"50-50\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8080/lifeline",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["lifeline"]
+              },
+              "description": "Use a lifeline for a specific question"
+            },
+            "response": []
+          },
+		{
+			"name": "Get Achievements",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/achievements/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"achievements",
+						"1"
+					]
+				},
+				"description": "Get user achievements"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Leaderboard",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/leaderboard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leaderboard"
+					]
+				},
+				"description": "Get the leaderboard"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Next Level",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/next-level",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"next-level"
+					]
+				},
+				"description": "Get information about the next level"
+			},
+			"response": []
+		},
+        {
+            "name": "Get User Coins",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:8080/user/1/coins",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["user", "1", "coins"]
+              },
+              "description": "Get the current coin balance for a user"
+            },
+            "response": []
+          }
+	]
+}
