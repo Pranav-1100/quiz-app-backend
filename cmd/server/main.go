@@ -3,12 +3,15 @@ package main
 import (
     "log"
     "net/http"
+    "os"
 
     "github.com/Pranav-1100/quiz-app-backend/internal/database"
+    "github.com/joho/godotenv"
     "github.com/Pranav-1100/quiz-app-backend/internal/router"
 )
 
 func main() {
+    godotenv.Load()
     db, err := database.InitDB("quiz.db")
     if err != nil {
         log.Fatalf("Error initializing database: %v", err)
@@ -26,6 +29,11 @@ func main() {
 
     r := router.SetupRouter(db)
 
-    log.Println("Server starting on :8080")
-    log.Fatal(http.ListenAndServe(":8080", r))
+    port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080" // Default port if not specified in environment
+    }
+
+    log.Printf("Server starting on :%s", port)
+    log.Fatal(http.ListenAndServe(":"+port, r))
 }
